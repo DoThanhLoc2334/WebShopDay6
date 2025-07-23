@@ -180,12 +180,12 @@ $productImages = [
         };
 
         $.ajax({
-            url: '/myshop/frontend/api/addCart.php',
+            url: '/WebShop_Day6/frontend/api/addCart.php',
             method: "POST",
             dataType: 'json',
             data: data,
             success: function (response) {
-                var htmlString = `✅ Sản phẩm đã được thêm! <a href="/myshop/frontend/pages/viewCart.php">Xem giỏ hàng</a>`;
+                var htmlString = `✅ Sản phẩm đã được thêm! <a href="/WebShop_Day6/frontend/pages/viewCart.php">Xem giỏ hàng</a>`;
                 $('#message').html(htmlString);
                 $('#alert-container').removeClass('d-none').addClass('show');
             },

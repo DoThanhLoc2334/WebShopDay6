@@ -230,12 +230,12 @@
                 quantity: 1 // Mặc định số lượng là 1
             };
             $.ajax({
-                url: '/demoshop/frontend/api/add_cart.php',
+                url: '/WebShop_Day6/frontend/api/add_cart.php',
                 method: 'POST',
                 dataType: 'json',
                 data: data,
                 success: function(data) {
-                    window.location.href = 'pages/viewCart.php';
+                    window.location.href = '/WebShop_Day6/frontend/pages/viewCart.php';
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     console.log(textStatus, errorThrown);

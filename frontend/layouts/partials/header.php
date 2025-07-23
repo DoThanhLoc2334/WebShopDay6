@@ -12,13 +12,16 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/WebShop_Day6/frontend/pages/viewCart.php">Cart</a>
+        </li>
         <?php if (isset($_SESSION['user_id'])): ?>
         <li class="nav-item">
           <a class="nav-link" href="logout.php">Logout</a>
         </li>
         <?php else: ?>
         <li class="nav-item">
-          <a class="nav-link" href="/demoshop/frontend/pages/login.php">Login</a>
+          <a class="nav-link" href="/WebShop_Day6/frontend/pages/login.php">Login</a>
         </li>
         <?php endif; ?>
         <li class="nav-item dropdown">
