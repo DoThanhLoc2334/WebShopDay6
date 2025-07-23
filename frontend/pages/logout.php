@@ -4,6 +4,7 @@ if (isset($_SESSION['user_id'])) {
     unset($_SESSION['username']);
     header('location:login.php');
 } else {
+    header('location: /demoshop/frontend/index.php');
     echo 'User not login!';
     die;
 }
