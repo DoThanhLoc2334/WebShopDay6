@@ -7,7 +7,7 @@
     <title>Demo Shop</title>
     <!-- Nhúng file Quản lý các Liên kết CSS dùng chung cho toàn bộ trang web -->
     <?php include_once(__DIR__ . '/../layouts/styles.php'); ?>
-    <link href="/demoshop/assets/frontend/css/style.css" type="text/css" rel="stylesheet" />
+    <link href="/WebShop_Day6/assets/frontend/css/style.css" type="text/css" rel="stylesheet" />
     <style>
         .image {
             width: 100px;
@@ -61,9 +61,9 @@
                                         <td><?= $no ?></td>
                                         <td>
                                             <?php if (empty($item['image'])) : ?>
-                                                <img src="/demoshop/assets/shared/img/default-image_600.png" class="img-fluid image" />
+                                                <img src="/WebShop_Day6/assets/shared/img/default-image_600.png" class="img-fluid image" />
                                             <?php else : ?>
-                                                <img src="/demoshop/assets/<?= $item['image'] ?>" class="img-fluid image" />
+                                                <img src="/WebShop_Day6/assets/<?= $item['image'] ?>" class="img-fluid image" />
                                             <?php endif; ?>
                                         </td>
                                         <td><?= $item['name'] ?></td>
@@ -86,8 +86,8 @@
                     <?php else : ?>
                         <h2>Cart Empty</h2>
                     <?php endif; ?>
-                    <a href="/demoshop/frontend" class="btn btn-warning btn-md"><i class="fa fa-arrow-left" aria-hidden="true"></i> Continue Shopping</a>
-                    <a href="/demoshop/frontend/pages/checkout.php" class="btn btn-primary btn-md"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Checkout</a>
+                    <a href="/WebShop_Day6/frontend" class="btn btn-warning btn-md"><i class="fa fa-arrow-left" aria-hidden="true"></i> Continue Shopping</a>
+                    <a href="/WebShop_Day6/frontend/pages/checkout.php" class="btn btn-primary btn-md"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Checkout</a>
                 </div>
             </div>
         </div>
@@ -134,7 +134,7 @@
                 // Dữ liệu gởi
                 var data = { id: id, quantity: quantity };
                 $.ajax({
-                    url: '/demoshop/frontend/api/updateCartItem.php',
+                    url: '/WebShop_Day6/frontend/api/updateCartItem.php',
                     method: "POST",
                     dataType: 'json',
                     data: data,
