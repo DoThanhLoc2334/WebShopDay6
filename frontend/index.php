@@ -191,12 +191,16 @@
                                 <p class="card-text"><?= $item[1] ?></p>
                                 <p class="card-text"><?= $item[2] ?></p>
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group"> 
+                                    <div class="btn-group">
                                         <a href="pages/details.php?id=<?= $item[0] ?>" class="btn btn-sm btn-outline-secondary">View</a>
                                         <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                                     </div>
                                     <small class="text-body-secondary">9 mins</small>
-                                    <a href="pages/details.php" class="btn btn-sm btn-outline-secondary">Add cart</a>
+                                    <button class="btn btn-sm btn-outline-secondary btn-add-cart"
+                                        data-id="<?= $item[0] ?>"
+                                        data-name="<?= $item[1] ?>"
+                                        data-price="<?= $item[2] ?>"
+                                        data-image="<?= $item[3] ?>">Add cart</button>
                                 </div>
                             </div>
                         </div>
@@ -210,6 +214,35 @@
 
     <?php include_once(__DIR__ . '/layouts/partials/footer.php'); ?>
     <?php include_once(__DIR__ . '/layouts/scripts.php'); ?>
+
+    <script>
+        $('.btn-add-cart').click(function(e) {
+            e.preventDefault();
+            const id = $(this).data('id');
+            const name = $(this).data('name');
+            const price = $(this).data('price');
+            const image = $(this).data('image');
+            const data = {
+                id,
+                name,
+                price,
+                image,
+                quantity: 1 // Mặc định số lượng là 1
+            };
+            $.ajax({
+                url: '/demoshop/frontend/api/add_cart.php',
+                method: 'POST',
+                dataType: 'json',
+                data: data,
+                success: function(data) {
+                    window.location.href = 'pages/viewCart.php';
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus, errorThrown);
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
