@@ -10,3 +10,4 @@ if (isset($_SESSION['cart'])) {
     $_SESSION['cart'] = $cart;
 }
 echo json_encode($_SESSION['cart']);
+
