@@ -180,7 +180,7 @@ $productImages = [
         };
 
         $.ajax({
-            url: '/WebShop_Day6/frontend/api/addCart.php',
+            url: '/Webshop_Day5/frontend/api/addCart.php',
             method: "POST",
             dataType: 'json',
             data: data,

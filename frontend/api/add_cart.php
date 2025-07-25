@@ -1,33 +1,34 @@
 <?php
-// Kiểm tra session, nếu đã đăng nhập rồi, chuyển hướng tới trang chính
 session_start();
-
 include_once(__DIR__ . '/../../dbconnect.php');
+// get product data
 $id = $_POST['id'];
 $name = $_POST['name'];
 $price = $_POST['price'];
 $image = $_POST['image'];
+$category = $_POST['category'];
 $quantity = $_POST['quantity'];
-
-if(isset($_SESSION['cart'])){
+if (isset($_SESSION['cart'])) {
     $data = $_SESSION['cart'];
     $data[$id] = [
+        'id' => $id,
         'name' => $name,
         'price' => $price,
-        'image' => $image,
         'quantity' => $quantity,
-        'total' => ($price * $quantity)
+        'image' => $image,
+        'total' => ($quantity * $price),
+        'image' => $image
     ];
-}else{
+} else {
     $data[$id] = [
+        'id' => $id,
         'name' => $name,
         'price' => $price,
-        'image' => $image,
         'quantity' => $quantity,
-        'total' => ($price * $quantity)
+        'image' => $image,
+        'total' => ($quantity * $price),
+        'image' => $image
     ];
 }
 $_SESSION['cart'] = $data;
 echo json_encode($_SESSION['cart']);
-?>
-

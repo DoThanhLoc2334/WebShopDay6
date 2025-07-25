@@ -1,46 +1,37 @@
-<?php session_start(); ?>
+<?php session_start(); 
+?>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Demo Shop</title>
-    <!-- Nhúng file Quản lý các Liên kết CSS dùng chung cho toàn bộ trang web -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop DTL - Cart</title>
     <?php include_once(__DIR__ . '/../layouts/styles.php'); ?>
-    <link href="/WebShop_Day6/assets/frontend/css/style.css" type="text/css" rel="stylesheet" />
+    <link href="/Webshop_Day5/assets/frontend/css/style.css" rel="stylesheet" />
     <style>
-        .image {
-            width: 100px;
-            height: 100px;
-        }
+        .image { width: 100px; height: 100px; }
     </style>
 </head>
 <body class="d-flex flex-column h-100">
-    <!-- header -->
     <?php include_once(__DIR__ . '/../layouts/partials/header.php'); ?>
-    <!-- end header -->
+
     <main role="main" class="mb-2">
-        <!-- Block content -->
         <?php
         include_once(__DIR__ . '/../../dbconnect.php');
-        $cart = [];
-        if (isset($_SESSION['cart'])) {
-            $cart = $_SESSION['cart'];
-        } else {
-            $cart = [];
-        }
+        $cart = $_SESSION['cart'] ?? [];
         ?>
         <div class="container mt-4">
-            <!-- Vùng ALERT hiển thị thông báo -->
             <div id="alert-container" class="alert alert-warning alert-dismissible fade d-none" role="alert">
                 <div id="message">&nbsp;</div>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+<div style="height: 100px;"></div>
+
             <h1 class="text-center">Cart</h1>
             <div class="row">
-                <div class="col col-md-12">
+                <div class="col-md-12">
                     <?php if (!empty($cart)) : ?>
                         <table id="tblCart" class="table table-bordered">
                             <thead>
@@ -54,104 +45,78 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody id="datarow">
-                                <?php $no = 1; ?>
-                                <?php foreach ($cart as $item) : ?>
+                            <tbody>
+                                <?php $no = 1; foreach ($cart as $item): ?>
                                     <tr>
-                                        <td><?= $no ?></td>
+                                        <td><?= $no++ ?></td>
                                         <td>
-                                            <?php if (empty($item['image'])) : ?>
-                                                <img src="/WebShop_Day6/assets/shared/img/default-image_600.png" class="img-fluid image" />
-                                            <?php else : ?>
-                                                <img src="/WebShop_Day6/assets/<?= $item['image'] ?>" class="img-fluid image" />
-                                            <?php endif; ?>
+<img src="/Webshop_Day5/assets/shared/img/<?= htmlspecialchars($item['image'] ?: 'default-image_600.png') ?>" class="img-fluid image" />
                                         </td>
                                         <td><?= $item['name'] ?></td>
                                         <td>
-                                            <input type="number" class="form-control" id="quantity_<?= $item['id'] ?>" name="quantity" value="<?= $item['quantity'] ?>" />
+                                            <input type="number" class="form-control" id="quantity_<?= $item['id'] ?>" value="<?= $item['quantity'] ?>" />
                                             <button class="btn btn-primary btn-sm btn-update-quantity" data-id="<?= $item['id'] ?>">Update</button>
                                         </td>
                                         <td><?= number_format($item['price'], 2, ".", ",") ?> vnđ</td>
                                         <td><?= number_format($item['quantity'] * $item['price'], 2, ".", ",") ?> vnđ</td>
                                         <td>
-                                            <a id="delete_<?= $no ?>" data-id="<?= $item['id'] ?>" class="btn btn-danger btn-delete-product">
-                                                <i class="fa fa-trash" aria-hidden="true"></i> Delete
-                                            </a>
+                                            <a href="#" class="btn btn-danger btn-delete-product" data-id="<?= $item['id'] ?>"><i class="fa fa-trash"></i> Delete</a>
                                         </td>
                                     </tr>
-                                    <?php $no++; ?>
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
-                    <?php else : ?>
+                    <?php else: ?>
                         <h2>Cart Empty</h2>
                     <?php endif; ?>
-                    <a href="/Webshop_Day5/frontend" class="btn btn-warning btn-md"><i class="fa fa-arrow-left" aria-hidden="true"></i> Continue Shopping</a>
-                    <a href="/Webshop_Day5/frontend/pages/checkout.php" class="btn btn-primary btn-md"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Checkout</a>
+
+                    <a href="/Webshop_Day5/frontend" class="btn btn-warning"><i class="fa fa-arrow-left"></i> Continue Shopping</a>
+                    <a href="/Webshop_Day5/frontend/pages/checkout.php" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Checkout</a>
                 </div>
             </div>
         </div>
-        <!-- End block content -->
     </main>
-    <!-- footer -->
+
     <?php include_once(__DIR__ . '/../layouts/partials/footer.php'); ?>
-    <!-- end footer -->
-    <!-- Nhúng file quản lý phần SCRIPT JAVASCRIPT -->
     <?php include_once(__DIR__ . '/../layouts/scripts.php'); ?>
-    <!-- Các file Javascript sử dụng riêng cho trang này, liên kết tại đây -->
+
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             function removeProductItem(id) {
-                var data = { id: id };
                 $.ajax({
                     url: '/Webshop_Day5/frontend/api/removeCartItem.php',
                     method: "POST",
                     dataType: 'json',
-                    data: data,
-                    success: function(data) {
-                        // Refresh lại trang
-                        location.reload();
-                    },
-                    error: function(jqXHR, textStatus, errorThrown) {
-                        console.log(textStatus, errorThrown);
-                        var htmlString = `<h1>Can not delete item</h1>`;
-                        $('#message').html(htmlString);
+                    data: { id },
+                    success: () => location.reload(),
+                    error: () => {
+                        $('#message').html('<h1>Can not delete item</h1>');
                         $('.alert').removeClass('d-none').addClass('show');
                     }
                 });
             }
 
-            // Đăng ký sự kiện cho các nút đang sử dụng class .btn-delete-sanpham
-            $('#tblCart').on('click', '.btn-delete-product', function(event) {
-                event.preventDefault();
-                var id = $(this).data('id');
-                console.log(id);
-                removeProductItem(id);
+            $('#tblCart').on('click', '.btn-delete-product', function (e) {
+                e.preventDefault();
+                removeProductItem($(this).data('id'));
             });
 
-            // Cập nhật số lượng trong Giỏ hàng
             function updateCartItem(id, quantity) {
-                // Dữ liệu gởi
-                var data = { id: id, quantity: quantity };
                 $.ajax({
-                    url: '/WebShop_Day6/frontend/api/updateCartItem.php',
+                    url: '/Webshop_Day5/frontend/api/updateCartItem.php',
                     method: "POST",
                     dataType: 'json',
-                    data: data,
-                    success: function(data) {
-                        location.reload();
-                    },
-                    error: function(jqXHR, textStatus, errorThrown) {
-                        console.log(textStatus, errorThrown);
-                        var htmlString = `<h1>Can not update item</h1>`;
-                        $('#message').html(htmlString);
+                    data: { id, quantity },
+                    success: () => location.reload(),
+                    error: () => {
+                        $('#message').html('<h1>Can not update item</h1>');
                         $('.alert').removeClass('d-none').addClass('show');
                     }
                 });
             }
 
-            $('#tblCart').on('click', '.btn-update-quantity', function(event) {
-                event.preventDefault();
+            $('#tblCart').on('click', '.btn-update-quantity', function (e) {
+                e.preventDefault();
                 var id = $(this).data('id');
                 var quantity = $('#quantity_' + id).val();
                 updateCartItem(id, quantity);

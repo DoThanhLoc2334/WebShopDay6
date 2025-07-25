@@ -217,7 +217,7 @@
 
     <!-- Add to Cart Script -->
     <script>
-    document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+    document.querySelectorAll('.btn-add-cart').forEach(btn => {
         btn.addEventListener('click', function () {
             const data = {
                 id: this.dataset.id,
