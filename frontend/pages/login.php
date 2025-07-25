@@ -2,7 +2,7 @@
 session_start();
 
 if (isset($_SESSION['user_id'])) {
-  header('Location: /myshop/frontend/index.php');
+  header('Location: /Webshop_Day5/frontend/index.php');
   exit();
 }
 
@@ -25,7 +25,7 @@ include_once(__DIR__ . '/../../dbconnect.php');
     if (password_verify($password, $user['password'])) {
       $_SESSION['user_id'] = $user['id'];
       $_SESSION['username'] = $user['username'];
-      header('Location: /demoshop/frontend/index.php');
+      header('Location: /Webshop_Day5/frontend/index.php');
       exit();
     } else {
       $error = "Invalid Username or Password!";
@@ -78,7 +78,7 @@ include_once(__DIR__ . '/../../dbconnect.php');
         <button type="submit" class="btn btn-primary w-100">Login</button>
       </form>
 
-      <p class="text-center mt-3">Not a member? <a href="/demoshop/frontend/pages/register.php">Register</a></p>
+      <p class="text-center mt-3">Not a member? <a href="/Webshop_Day5/frontend/pages/register.php">Register</a></p>
     </div>
   </div>
 

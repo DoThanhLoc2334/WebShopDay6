@@ -7,13 +7,13 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="/Webshop_Day5/frontend/index.php">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/WebShop_Day6/frontend/pages/viewCart.php">Cart</a>
+          <a class="nav-link" href="/Webshop_Day5/frontend/pages/viewCart.php">Cart</a>
         </li>
         <?php if (isset($_SESSION['user_id'])): ?>
         <li class="nav-item">
@@ -21,7 +21,7 @@
         </li>
         <?php else: ?>
         <li class="nav-item">
-          <a class="nav-link" href="/WebShop_Day6/frontend/pages/login.php">Login</a>
+          <a class="nav-link" href="/Webshop_Day5/frontend/pages/login.php">Login</a>
         </li>
         <?php endif; ?>
         <li class="nav-item dropdown">

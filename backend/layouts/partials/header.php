@@ -7,9 +7,12 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="/frontend/pages/index.php">Home</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="/frontend/pages/viewCart.php">Cart</a>
+        </li>
+        <li class="nav-item"> 
           <a class="nav-link" href="#">Link</a>
         </li>
         <li class="nav-item dropdown">

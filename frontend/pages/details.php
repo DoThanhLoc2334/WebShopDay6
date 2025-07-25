@@ -98,14 +98,14 @@ $productImages = [
             <!-- LEFT: Hình ảnh -->
             <div class="col-md-5 text-center p-4">
                 <div class="preview-pic mb-3">
-                    <img src="/myshop/assets/shared/img/<?= htmlspecialchars($product['image_url']) ?>"
+                    <img src="/Webshop_Day5/assets/shared/img/<?= htmlspecialchars($product['image_url']) ?>"
                          alt="<?= htmlspecialchars($product['name']) ?>"
                          class="img-fluid">
                 </div>
 
                 <ul class="preview-thumbnail nav nav-tabs justify-content-center"><?php foreach ($productImages as $img): ?>
                         <li class="mx-1">
-                            <img src="/demoshop/assets/shared/img/<?= htmlspecialchars($img) ?>"
+                            <img src="/Webshop_Day5/assets/shared/img/<?= htmlspecialchars($img) ?>"
                                  alt="thumbnail"
                                  class="img-thumbnail">
                         </li>
@@ -185,7 +185,7 @@ $productImages = [
             dataType: 'json',
             data: data,
             success: function (response) {
-                var htmlString = `✅ Sản phẩm đã được thêm! <a href="/WebShop_Day6/frontend/pages/viewCart.php">Xem giỏ hàng</a>`;
+                var htmlString = `✅ Sản phẩm đã được thêm! <a href="/Webshop_Day5/frontend/pages/viewCart.php">Xem giỏ hàng</a>`;
                 $('#message').html(htmlString);
                 $('#alert-container').removeClass('d-none').addClass('show');
             },

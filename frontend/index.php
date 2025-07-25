@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Myshop</title>
+    <title>Shop DTL</title>
     <?php include_once(__DIR__ . '/layouts/styles.php') ?>
 </head>
 
@@ -235,7 +235,7 @@
                 dataType: 'json',
                 data: data,
                 success: function(data) {
-                    window.location.href = '/WebShop_Day6/frontend/pages/viewCart.php';
+                    window.location.href = '/Webshop_Day5/frontend/pages/viewCart.php';
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     console.log(textStatus, errorThrown);

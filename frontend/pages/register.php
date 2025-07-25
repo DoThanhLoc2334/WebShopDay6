@@ -76,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
                 <button type="submit" class="btn btn-primary w-100">Register</button>
             </form>
-            <p class="text-center mt-3">Already have an account? <a href="/demoshop/frontend/pages/login.php">Login</a></p>
+            <p class="text-center mt-3">Already have an account? <a href="/Webshop_Day5/frontend/pages/login.php">Login</a></p>
         </div>
     </div>
     <?php include_once(__DIR__ . '/../layouts/partials/footer.php'); ?>

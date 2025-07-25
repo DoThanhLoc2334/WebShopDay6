@@ -86,8 +86,8 @@
                     <?php else : ?>
                         <h2>Cart Empty</h2>
                     <?php endif; ?>
-                    <a href="/WebShop_Day6/frontend" class="btn btn-warning btn-md"><i class="fa fa-arrow-left" aria-hidden="true"></i> Continue Shopping</a>
-                    <a href="/WebShop_Day6/frontend/pages/checkout.php" class="btn btn-primary btn-md"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Checkout</a>
+                    <a href="/Webshop_Day5/frontend" class="btn btn-warning btn-md"><i class="fa fa-arrow-left" aria-hidden="true"></i> Continue Shopping</a>
+                    <a href="/Webshop_Day5/frontend/pages/checkout.php" class="btn btn-primary btn-md"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Checkout</a>
                 </div>
             </div>
         </div>
@@ -104,7 +104,7 @@
             function removeProductItem(id) {
                 var data = { id: id };
                 $.ajax({
-                    url: '/demoshop/frontend/api/removeCartItem.php',
+                    url: '/Webshop_Day5/frontend/api/removeCartItem.php',
                     method: "POST",
                     dataType: 'json',
                     data: data,
