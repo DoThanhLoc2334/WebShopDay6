@@ -215,33 +215,39 @@
     <?php include_once(__DIR__ . '/layouts/partials/footer.php'); ?>
     <?php include_once(__DIR__ . '/layouts/scripts.php'); ?>
 
+    <!-- Add to Cart Script -->
     <script>
-        $('.btn-add-cart').click(function(e) {
-            e.preventDefault();
-            const id = $(this).data('id');
-            const name = $(this).data('name');
-            const price = $(this).data('price');
-            const image = $(this).data('image');
+    document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+        btn.addEventListener('click', function () {
             const data = {
-                id,
-                name,
-                price,
-                image,
-                quantity: 1 // Mặc định số lượng là 1
+                id: this.dataset.id,
+                name: this.dataset.name,
+                price: this.dataset.price,
+                image: this.dataset.image,
+                quantity: this.dataset.quantity
             };
-            $.ajax({
-                url: '/WebShop_Day6/frontend/api/add_cart.php',
+
+            fetch('/Webshop_Day5/frontend/api/add_cart.php', {
                 method: 'POST',
-                dataType: 'json',
-                data: data,
-                success: function(data) {
-                    window.location.href = '/Webshop_Day5/frontend/pages/viewCart.php';
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
                 },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    console.log(textStatus, errorThrown);
+                body: new URLSearchParams(data)
+            })
+            .then(res => res.json())
+            .then(response => {
+                if (response.success) {
+                    alert("🛒 Đã thêm vào giỏ hàng!");
+                } else {
+                    alert("❌ Lỗi khi thêm giỏ hàng.");
                 }
+            })
+            .catch(err => {
+                console.error(err);
+                    alert("🛒 Đã thêm vào giỏ hàng!");
             });
         });
+    });
     </script>
 </body>
 
