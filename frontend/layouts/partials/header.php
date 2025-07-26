@@ -18,7 +18,7 @@ if (session_status() === PHP_SESSION_NONE) {
           <a class="nav-link active" aria-current="page" href="/Webshop_Day5/frontend/index.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" href="/Webshop_Day5/backend/pages/dashboard.php">Dashboard</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/Webshop_Day5/frontend/pages/viewCart.php">Cart</a>

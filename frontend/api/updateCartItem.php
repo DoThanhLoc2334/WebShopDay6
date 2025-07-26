@@ -12,7 +12,7 @@ if (isset($_SESSION['cart'])) {
         'name' => $tempProd['name'],
         'quantity' => $quantity,
         'price' => $tempProd['price'],
-        'total' => ($quantity * $tempProd['total']),
+        'total' => ($quantity * $tempProd['price']),
         'image' => $tempProd['image']
     ];
     $_SESSION['cart'] = $cart;
